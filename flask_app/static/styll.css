@@ -1,0 +1,188 @@
+/* Styles généraux pour le body (couleur de fond gérée ici, par exemple un gris clair par défaut) */
+body {
+    background-color: #f8f9fa; /* Gris clair comme fond principal, modifiable si besoin */
+}
+
+/* Bouton flottant pour ouvrir le chat */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0084ff; /* Bleu comme Messenger */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    z-index: 1000;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Styles généraux pour le chat widget (comme une petite fenêtre popup) */
+.chat-container {
+    position: fixed;
+    bottom: 90px; /* Au-dessus du bouton flottant */
+    right: 20px;
+    width: 350px; /* Taille petite fenêtre */
+    height: 500px; /* Hauteur fixe pour une petite fenêtre */
+    background-color: #ffffff; /* Fond blanc pour le chat, géré ici */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* Header du chat avec bouton fermer */
+.chat-header {
+    background-color: #0084ff; /* Bleu comme Messenger */
+    color: white;
+    padding: 10px 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Zone des messages (fond géré ici pour un contraste) */
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #e5ddd5; /* Fond beige clair comme WhatsApp pour les messages */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Conteneur de message général */
+.message {
+    margin-bottom: 10px;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 0.3s forwards; /* Animation d'entrée */
+}
+
+/* Animation slide-in et fade-in */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bulles de messages */
+.bubble {
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center; /* Pour aligner l'icône et le texte */
+    transition: transform 0.2s ease; /* Pour un effet hover animé */
+}
+
+.bubble:hover {
+    transform: scale(1.02); /* Légère animation au hover pour plus de vie */
+}
+
+/* Messages de l'utilisateur (à droite, vert) */
+.user-msg {
+    align-self: flex-end;
+}
+
+.user-msg .bubble {
+    background-color: #dcf8c6; /* Vert clair comme WhatsApp */
+    color: #000;
+    border-bottom-right-radius: 4px; /* Coin moins arrondi pour un effet "queue" */
+}
+
+/* Messages du bot (à gauche, gris) */
+.bot-msg {
+    align-self: flex-start;
+}
+
+.bot-msg .bubble {
+    background-color: #ffffff; /* Blanc pour les bulles bot */
+    color: #000;
+    border: 1px solid #ddd;
+    border-bottom-left-radius: 4px; /* Coin moins arrondi pour un effet "queue" */
+}
+
+/* Barre d'input (fond blanc) */
+.chat-input-container {
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f0f2f5; /* Fond clair pour l'input */
+    display: flex;
+    align-items: center;
+}
+
+#chat_widget_input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    margin-right: 10px;
+}
+
+.send-button {
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.send-button:hover {
+    background-color: #006acc;
+}
+
+/* Scrollbar personnalisée pour un look moderne */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+/* Classe pour cacher (utilisée dans JS) */
+.d-none {
+    display: none !important;
+}

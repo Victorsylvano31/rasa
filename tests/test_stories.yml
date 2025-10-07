@@ -1,0 +1,89 @@
+stories:
+
+- story: chemin_heureux_1
+  steps:
+    - user: |
+        bonjour !
+      intent: greet
+    - action: utter_greet
+    - user: |
+        super !
+      intent: mood_great
+    - action: utter_happy
+
+- story: chemin_heureux_2
+  steps:
+    - user: |
+        bonjour !
+      intent: greet
+    - action: utter_greet
+    - user: |
+        génial
+      intent: mood_great
+    - action: utter_happy
+    - user: |
+        au revoir !
+      intent: goodbye
+    - action: utter_goodbye
+
+- story: chemin_triste_1
+  steps:
+    - user: |
+        bonjour
+      intent: greet
+    - action: utter_greet
+    - user: |
+        pas très bien
+      intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - user: |
+        oui
+      intent: affirm
+    - action: utter_happy
+
+- story: chemin_triste_2
+  steps:
+    - user: |
+        bonjour
+      intent: greet
+    - action: utter_greet
+    - user: |
+        pas très bien
+      intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - user: |
+        pas vraiment
+      intent: deny
+    - action: utter_goodbye
+
+- story: chemin_triste_3
+  steps:
+    - user: |
+        salut
+      intent: greet
+    - action: utter_greet
+    - user: |
+        vraiment terrible
+      intent: mood_unhappy
+    - action: utter_cheer_up
+    - action: utter_did_that_help
+    - user: |
+        non
+      intent: deny
+    - action: utter_goodbye
+
+- story: dire_au_revoir
+  steps:
+    - user: |
+        au revoir !
+      intent: goodbye
+    - action: utter_goodbye
+
+- story: defier_bot
+  steps:
+    - user: |
+        es-tu un bot ?
+      intent: bot_challenge
+    - action: utter_iamabot
